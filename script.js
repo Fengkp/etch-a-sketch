@@ -7,7 +7,7 @@ keep going until we've reached 16 x 16 divs
 */
 function createGrid() {
     let row = -1;
-    const body = document.querySelector('body');
+    const body = document.querySelector('.content');
     const TOTAL_SQUARES = 16 * 16;
     const gridContainer =  document.createElement('div');
 
@@ -40,7 +40,7 @@ function addHover() {
 }
 
 function changeColor(gridItem) {
-    gridItem.target.style.backgroundColor = 'white';
+    gridItem.target.style.backgroundColor = 'black';
 }
 
 createGrid();

@@ -1,0 +1,12 @@
+Checklist:
+Large header with name of the game at the top of the page
+A drawing area in the center of the page with a default grid of 16x16 blocks
+A sidebar to the left of the drawing area with a series of buttons and slider
+- Buttons:
+    - Color Chooser
+        - Prompts RGB color picker
+    - Eraser
+        - Sets the grid item color back to white
+    - Clear
+        - Sets entire grid color back to white
+Footer at the bottom
