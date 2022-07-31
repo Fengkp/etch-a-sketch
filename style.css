@@ -1,8 +1,17 @@
+body {
+    background-color:rgb(107, 107, 107);
+}
 .grid-container {
     display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 100px);
+    gap: 1px;
 }
 
-.square {
-    background-color: red;
-    border: 1px solid black;
+.grid-item {
+    display: flex;
+    background-color: rgb(39, 42, 44);
+    text-align: center;
+    align-items: center;
 }
+

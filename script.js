@@ -5,23 +5,43 @@ everytime we hit 16 divs, make a new row and make another 16
 divCount % 16 = 0
 keep going until we've reached 16 x 16 divs
 */
+function createGrid() {
+    let row = -1;
+    const body = document.querySelector('body');
+    const TOTAL_SQUARES = 16 * 16;
+    const gridContainer =  document.createElement('div');
 
-let row = -1;
-const body = document.querySelector('body');
-const TOTAL_SQUARES = 16 * 16;
-const gridContainer =  document.createElement('div');
+    gridContainer.classList.add('grid-container');
+    body.appendChild(gridContainer);
 
-gridContainer.classList.add('grid-container');
-body.appendChild(gridContainer);
-
-
-for (square = 0; square < TOTAL_SQUARES; square++) {
-    if (square % 16 == 0)
-        row++;
-        
-    const div = document.createElement('div');
-    div.setAttribute('id', square);
-    div.classList.add('square');
-    div.classList.add(`row-${row}`);
-    gridContainer.appendChild(div);
+    for (column = 0; column < TOTAL_SQUARES; column++) {
+        if (column % 16 == 0)
+            row++;
+            
+        const div = document.createElement('div');
+        setAttributes(div, column, 'grid-item', `row-${row}`);
+        gridContainer.appendChild(div);
+    }
 }
+
+function setAttributes(element, id, ...classes) {
+    element.setAttribute('id', id);
+    classes.forEach(cssClass => {
+        element.classList.add(cssClass);
+    })
+}
+
+function addHover() {
+    const gridItems = document.querySelectorAll('.grid-item');
+    
+    gridItems.forEach(gridItem => gridItem.addEventListener('mouseover', (e) => {
+        changeColor(e);
+    }))
+}
+
+function changeColor(gridItem) {
+    gridItem.target.style.backgroundColor = 'white';
+}
+
+createGrid();
+addHover();
