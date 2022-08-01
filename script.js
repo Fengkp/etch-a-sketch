@@ -1,10 +1,3 @@
-/* 
-Create 16x16 grid usings divs
-to do that select the body then add new divs until we reach 16
-everytime we hit 16 divs, make a new row and make another 16
-divCount % 16 = 0
-keep going until we've reached 16 x 16 divs
-*/
 function createGrid() {
     let row = -1;
     const body = document.querySelector('.grid-container');
@@ -31,7 +24,7 @@ function setAttributes(element, id, ...classes) {
     })
 }
 
-function addClick() {
+function addButtonClick() {
     const gridItems = document.querySelectorAll('.grid-item');
     
     gridItems.forEach(gridItem => gridItem.addEventListener('click', (e) => {
@@ -39,9 +32,68 @@ function addClick() {
     }))
 }
 
+
 function changeColor(gridItem) {
-    gridItem.target.style.backgroundColor = 'rgb(58, 58, 58)';
+    if (erasing == false)
+        gridItem.target.style.backgroundColor = currentColor;
+    else 
+        gridItem.target.style.backgroundColor = 'white';
+}   
+
+function erase(button) {
+    if (erasing == true) {
+        erasing = false;
+        button.target.style.backgroundColor = 'rgb(196, 196, 196)';
+        button.target.style.color = 'rgb(58, 58, 58)';
+        return;
+    }
+    erasing = true;
+    button.target.style.backgroundColor = '#3A3A3A';
+    button.target.style.color = 'white';
 }
 
-createGrid();
-addClick();
+function acknowledgeClick(button) {
+    button.target.style.backgroundColor = 'rgb(58, 58, 58)';
+    button.target.style.color = 'white';
+    setTimeout(() => {
+        button.target.style.backgroundColor = 'rgb(196, 196, 196)';
+        button.target.style.color = 'rgb(58, 58, 58)';
+    }, '100');  
+}
+
+function clearAll() {
+    const gridItems = document.querySelectorAll('.grid-item');
+
+    gridItems.forEach(gridItem => gridItem.style.backgroundColor = 'white');
+}
+
+
+
+function updateCurrentColor(event) {
+    currentColor = event.target.value;
+}
+
+
+function startup() {
+    const buttons = document.querySelectorAll('.btn');
+    const colorPicker = document.querySelector('#color');
+    colorPicker.addEventListener('input', updateCurrentColor, false);
+
+    buttons.forEach(btn => btn.addEventListener('click', (e) => {
+        if (e.target.textContent === 'Eraser')
+            erase(e);
+        else if (e.target.textContent === 'Clear All') {
+            clearAll();
+            acknowledgeClick(e);
+        }
+        else if (e.target.textContent === 'Choose Color') {
+            btn.addEventListener('input', watchColorPicker, false);
+        }
+    }));
+    createGrid();
+    addButtonClick();
+}
+
+let erasing = false;
+let currentColor = 'rgb(58, 58, 58)';
+startup();
