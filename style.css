@@ -1,31 +1,63 @@
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 200px;
-}
-
-.header-text {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 75px;
-}
-
+/* GENERAL STYLES */
 body {
+    display: flex;
+    flex-direction: column;
     background-color:rgb(196, 196, 196);
 }
 
-.content {
+h1, 
+h2 {    
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 75px;
+    color: rgb(58, 58, 58);
+}
+
+h2 {
+    font-size: 20px;
+    margin-top: auto;
+}
+
+/* Header and Footer */
+.header, 
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+}
+
+ /* Main Content */
+.options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+}
+
+.btn {
+    background-color: rgb(196, 196, 196);
+    height: 50px;
+    width: 100px;
+    margin: 10px;
+    border-radius: 8px;
+    border: solid 1px rgb(58, 58, 58);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+/* Grid */
+.grid-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.grid-container {
+.grid {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     gap: 1px;
-    height: 200px;
-    width: 200px;
+    border: 2px solid rgb(58, 58, 58);
 }
 
 .grid-item {
@@ -34,8 +66,6 @@ body {
     width: 20px;
 }
 
-.btn {
-    height: 30px;
-    width: 60px;
-}
+
+
 

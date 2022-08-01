@@ -7,11 +7,11 @@ keep going until we've reached 16 x 16 divs
 */
 function createGrid() {
     let row = -1;
-    const body = document.querySelector('.content');
+    const body = document.querySelector('.grid-container');
     const TOTAL_SQUARES = 16 * 16;
     const gridContainer =  document.createElement('div');
 
-    gridContainer.classList.add('grid-container');
+    gridContainer.classList.add('grid');
     body.appendChild(gridContainer);
 
     for (column = 0; column < TOTAL_SQUARES; column++) {
@@ -31,17 +31,17 @@ function setAttributes(element, id, ...classes) {
     })
 }
 
-function addHover() {
+function addClick() {
     const gridItems = document.querySelectorAll('.grid-item');
     
-    gridItems.forEach(gridItem => gridItem.addEventListener('mouseover', (e) => {
+    gridItems.forEach(gridItem => gridItem.addEventListener('click', (e) => {
         changeColor(e);
     }))
 }
 
 function changeColor(gridItem) {
-    gridItem.target.style.backgroundColor = 'black';
+    gridItem.target.style.backgroundColor = 'rgb(58, 58, 58)';
 }
 
 createGrid();
-addHover();
+addClick();
